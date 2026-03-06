@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granja Escuela Cuna | Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Modern, fun fonts (Fredoka for headings, Nunito for body) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Fredoka:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #2E7D32;
+            --secondary-color: #FFA000;
+            --accent-color: #81C784;
+            --bg-color: #F9FBE7;
+            --text-color: #333333;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .navbar-brand {
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        /* Navbar aesthetic */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 2px dashed rgba(46, 125, 50, 0.2);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            color: var(--primary-color) !important;
+            font-size: 2rem;
+            text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            color: #555 !important;
+            font-weight: 700;
+            margin: 0 12px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--secondary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Hero styling */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80') center/cover no-repeat;
+            animation: kenburns 20s infinite alternate ease-in-out;
+        }
+
+        @keyframes kenburns {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            padding: 3rem;
+            background: rgba(46, 125, 50, 0.3);
+            backdrop-filter: blur(8px);
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 90%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Buttons */
+        .btn-custom {
+            border-radius: 50px;
+            padding: 12px 35px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary-custom {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: #FF8F00;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 25px rgba(255, 160, 0, 0.4);
+            color: white;
+        }
+
+        .btn-outline-custom {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline-custom:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(46, 125, 50, 0.3);
+        }
+
+        /* Notice Banner */
+        .notice-banner {
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            color: white;
+            border-radius: 24px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(46, 125, 50, 0.2);
+            border: none;
+        }
+
+        .notice-banner::before {
+            content: '🌿';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            right: -20px;
+            top: -20px;
+            transform: rotate(15deg);
+        }
+
+        /* Standard Cards */
+        .card {
+            border: none;
+            border-radius: 30px;
+            overflow: visible;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: white;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(249, 251, 231, 0.6) 100%);
+            z-index: -1;
+            transition: opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) rotate(1deg);
+            box-shadow: 0 25px 50px rgba(46, 125, 50, 0.15);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            padding: 15px 15px 0 15px;
+        }
+
+        .card-img-top {
+            height: 240px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-icon {
+            position: absolute;
+            top: 0;
+            right: 5px;
+            background: var(--secondary-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 10px 20px rgba(255, 160, 0, 0.3);
+            transform: rotate(15deg);
+            transition: transform 0.3s ease;
+            z-index: 2;
+        }
+
+        .card:hover .card-icon {
+            transform: rotate(-10deg) scale(1.1);
+        }
+
+        .card-body {
+            padding: 2rem 1.5rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background-color: var(--secondary-color);
+            border-radius: 3px;
+        }
+
+        /* Interactive Footer */
+        footer {
+            background-color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 6rem;
+            border-top: 3px dashed rgba(46, 125, 50, 0.2);
+            position: relative;
+        }
+
+        .footer-logo {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .social-icons a {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Floating decorations */
+        .decor-leaf {
+            position: absolute;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: -1;
+            color: var(--primary-color);
+        }
+
+        .leaf-1 {
+            top: 15%;
+            left: 5%;
+            font-size: 5rem;
+            transform: rotate(45deg);
+        }
+
+        .leaf-2 {
+            top: 40%;
+            right: 5%;
+            font-size: 7rem;
+            transform: rotate(-20deg);
+        }
+
+        .leaf-3 {
+            bottom: 10%;
+            left: 10%;
+            font-size: 4rem;
+            transform: rotate(15deg);
+        }
+
+        .leaf-4 {
+            top: 70%;
+            right: 10%;
+            font-size: 6rem;
+            transform: rotate(65deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <i class="bi bi-flower1 decor-leaf leaf-1"></i>
+    <i class="bi bi-flower2 decor-leaf leaf-2"></i>
+    <i class="bi bi-flower3 decor-leaf leaf-3"></i>
+    <i class="bi bi-tree-fill decor-leaf leaf-4"></i>
+
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-brightness-high-fill text-warning me-2"></i> CUNA
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html"
+                            style="color: var(--primary-color) !important;">Inicio</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="campDropdown" role="button"
+                            data-bs-toggle="dropdown">Campamentos</a>
+                        <ul class="dropdown-menu border-0 shadow-lg p-3 rounded-4" style="background-color: #fdfbf7;">
+                            <li><a class="dropdown-item rounded-3 fw-bold text-success py-2" href="navidad.html"><i
+                                        class="bi bi-snow2 me-2 text-info"></i> Navidad</a></li>
+                            <li><a class="dropdown-item rounded-3 fw-bold text-success py-2" href="easter.html"><i
+                                        class="bi bi-flower3 me-2 text-warning"></i> Easter</a></li>
+                            <li><a class="dropdown-item rounded-3 fw-bold text-success py-2" href="verano.html"><i
+                                        class="bi bi-sun me-2 text-danger"></i> Verano</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ms-lg-4 mt-3 mt-lg-0">
+                        <a href="easter.html" class="btn btn-custom btn-primary-custom shadow">
+                            <i class="bi bi-calendar2-heart-fill me-2"></i> Reservar Plaza
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-container">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Granja Escuela Cuna</h1>
+            <p>Donde los niños aprenden el lenguaje mágico de la naturaleza 🍃</p>
+            <a href="#estaciones" class="btn btn-custom btn-primary-custom mt-2">¡Explorar Más!</a>
+        </div>
+    </header>
+
+    <main class="container py-5 mt-5" id="estaciones">
+
+        <div class="alert notice-banner text-center mb-5 mx-auto" style="max-width: 900px;">
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-center">
+                <span class="badge bg-white text-success rounded-pill px-4 py-2 fs-6 me-md-3 mb-3 mb-md-0 shadow-sm">
+                    <i class="bi bi-stars text-warning"></i> ¡NUEVO!
+                </span>
+                <span class="fs-5 fw-bold">Ya hemos abierto el plazo de pre-inscripción para el Campamento de Easter.
+                    ¡No te quedes sin tu sitio!</span>
+            </div>
+        </div>
+
+        <h2 class="section-title mt-4">Nuestras Estaciones</h2>
+
+        <div class="row g-5 mt-3">
+            <!-- Navidad -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <!-- Adding fallback images via onerror just in case -->
+                        <img src="/img/Navidad.jpg"
+                            onerror="this.src='https://images.unsplash.com/photo-1544464333-8f060a80e608?q=80'"
+                            class="card-img-top" alt="Campamento Navidad">
+                        <div class="card-icon" style="background-color: #29B6F6;"><i class="bi bi-snow2"></i></div>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h4 class="fw-bold mb-3" style="color: #1565C0;">Campamento de Navidad</h4>
+                        <p class="text-muted lh-lg flex-grow-1">
+                            La magia del invierno llega a la granja. En nuestro Christmas Camp vivimos tradiciones
+                            navideñas, manualidades, contacto con los animales y actividades especiales en un ambiente
+                            acogedor y familiar. Un campamento de día para disfrutar las vacaciones de forma activa y en
+                            plena naturaleza.
+                        </p>
+                        <a href="navidad.html" class="btn btn-custom btn-outline-custom w-100 mt-4"
+                            style="color: #1565C0; border-color: #1565C0;">¡Descubrir Navidad!</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Easter -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card border border-2" style="border-color: #FFCA28; background-color: #FFFDE7;">
+                    <div class="card-img-wrapper">
+                        <img src="img/Easter.jpg"
+                            onerror="this.src='https://images.unsplash.com/photo-1522271815181-79b9409ce24d?q=80'"
+                            class="card-img-top" alt="Campamento Easter">
+                        <div class="card-icon" style="background-color: var(--primary-color)"><i
+                                class="bi bi-egg-fried"></i></div>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h4 class="fw-bold mb-3" style="color: var(--primary-color);">Campamento de Easter</h4>
+                        <p class="text-muted lh-lg flex-grow-1">
+                            Esta primavera, vive la naturaleza en pleno despertar. En nuestro Easter Camp disfrutamos de
+                            talleres creativos, cuidado de animales, huerto y juegos al aire libre en un entorno seguro
+                            y educativo. Un campamento de día donde cada jornada es una nueva aventura en la granja.
+                        </p>
+                        <a href="easter.html"
+                            class="btn btn-custom btn-primary-custom w-100 mt-4 shadow-sm">¡Inscribirse en Easter!</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Verano -->
+            <div class="col-lg-4 col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="img/Verano.jpg"
+                            onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80'"
+                            class="card-img-top" alt="Campamento Verano">
+                        <div class="card-icon" style="background-color: #FF7043;"><i class="bi bi-sun-fill"></i></div>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h4 class="fw-bold mb-3" style="color: #E64A19;">Campamento de Verano</h4>
+                        <p class="text-muted lh-lg flex-grow-1">
+                            Un verano diferente, rodeados de naturaleza. En nuestro Summer Camp combinamos actividades
+                            en la granja, juegos refrescantes, talleres y experiencias al aire libre que fomentan la
+                            autonomía, la amistad y el respeto por el entorno. Diversión diaria con recuerdos para todo
+                            el verano.
+                        </p>
+                        <button class="btn btn-custom w-100 mt-4"
+                            style="background-color: #e0e0e0; color: #757575; cursor: not-allowed;"
+                            disabled>Próximamente disponible</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FAQ Section -->
+    <section class="py-5 bg-white position-relative" id="faq">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="badge bg-light text-primary rounded-pill px-4 py-2 fs-6 mb-3 border border-primary">
+                    <i class="bi bi-question-circle-fill me-2"></i>Dudas Comunes
+                </span>
+                <h2 class="display-5 fw-bold text-primary mb-3">Preguntas frecuentes (FAQ)</h2>
+                <p class="text-muted fs-5 col-md-8 mx-auto">Resuelve todas tus dudas sobre nuestro campamento antes de
+                    inscribirte.</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="accordion accordion-flush" id="accordionFaq">
+
+                        <!-- FAQ 1 -->
+                        <div class="accordion-item bg-light border-0 mb-3 rounded-4 overflow-hidden shadow-sm">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-light fw-bold fs-5 text-primary collapsed"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    <i class="bi bi-person-hearts me-3 fs-4 text-warning"></i> ¿Para qué edades está
+                                    dirigido el Easter Camp?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+                                <div class="accordion-body text-muted fs-6 lh-lg px-5 pb-4">
+                                    El Easter Camp está pensado para niños aproximadamente de <strong>3 a 12
+                                        años</strong>, con actividades adaptadas según la edad.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="accordion-item bg-light border-0 mb-3 rounded-4 overflow-hidden shadow-sm">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-light fw-bold fs-5 text-primary collapsed"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    <i class="bi bi-geo-alt-fill me-3 fs-4 text-success"></i> ¿Dónde se realiza el
+                                    campamento?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+                                <div class="accordion-body text-muted fs-6 lh-lg px-5 pb-4">
+                                    El campamento se realiza en <strong>Granja Escuela Cuna</strong>, en un entorno
+                                    natural seguro donde los niños pueden aprender y disfrutar al aire libre.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="accordion-item bg-light border-0 mb-3 rounded-4 overflow-hidden shadow-sm">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-light fw-bold fs-5 text-primary collapsed"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    <i class="bi bi-clock-fill me-3 fs-4 text-info"></i> ¿Cuál es el horario del Easter
+                                    Camp?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+                                <div class="accordion-body text-muted fs-6 lh-lg px-5 pb-4">
+                                    El horario habitual es aproximadamente: <strong>9:00 – 14:00</strong>.<br>
+                                    Hay opciones de aula matinal (de 7:00 a 9:00) o comedor según disponibilidad.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 4 -->
+                        <div class="accordion-item bg-light border-0 mb-3 rounded-4 overflow-hidden shadow-sm">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-light fw-bold fs-5 text-primary collapsed"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    <i class="bi bi-basket-fill me-3 fs-4 text-danger"></i> ¿Los niños necesitan llevar
+                                    comida?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+                                <div class="accordion-body text-muted fs-6 lh-lg px-5 pb-4">
+                                    No. El desayuno de media mañana está incluido en el precio, solo tienen que traer
+                                    una <strong>botella de agua</strong>.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 5 -->
+                        <div class="accordion-item bg-light border-0 mb-3 rounded-4 overflow-hidden shadow-sm">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-light fw-bold fs-5 text-primary collapsed"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    <i class="bi bi-backpack4-fill me-3 fs-4 text-warning"></i> ¿Qué deben traer los
+                                    niños?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+                                <div class="accordion-body text-muted fs-6 lh-lg px-5 pb-4">
+                                    Recomendamos traer:
+                                    <ul class="mt-2 list-unstyled">
+                                        <li><i class="bi bi-check2 text-success me-2"></i> Ropa cómoda que se pueda
+                                            ensuciar</li>
+                                        <li><i class="bi bi-check2 text-success me-2"></i> Zapatillas deportivas</li>
+                                        <li><i class="bi bi-check2 text-success me-2"></i> Gorra y protección solar</li>
+                                        <li><i class="bi bi-check2 text-success me-2"></i> Botella de agua</li>
+                                        <li><i class="bi bi-check2 text-success me-2"></i> Ropa de cambio para los más
+                                            pequeños</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 6 -->
+                        <div class="accordion-item bg-light border-0 mb-3 rounded-4 overflow-hidden shadow-sm">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-light fw-bold fs-5 text-primary collapsed"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                                    <i class="bi bi-tree-fill me-3 fs-4 text-success"></i> ¿Las actividades se realizan
+                                    al aire libre?
+                                </button>
+                            </h2>
+                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+                                <div class="accordion-body text-muted fs-6 lh-lg px-5 pb-4">
+                                    La mayoría de actividades son al aire libre, aprovechando el entorno natural de la
+                                    granja. En caso de lluvia hay espacios cubiertos para continuar las actividades.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 7 -->
+                        <div class="accordion-item bg-light border-0 mb-3 rounded-4 overflow-hidden shadow-sm">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-light fw-bold fs-5 text-primary collapsed"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                                    <i class="bi bi-shield-fill-check me-3 fs-4 text-info"></i> ¿Es seguro el
+                                    campamento?
+                                </button>
+                            </h2>
+                            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+                                <div class="accordion-body text-muted fs-6 lh-lg px-5 pb-4">
+                                    Sí. Todas las actividades están supervisadas por monitores especializados, y la
+                                    granja cuenta con espacios preparados para trabajar con niños.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 8 -->
+                        <div class="accordion-item bg-light border-0 mb-3 rounded-4 overflow-hidden shadow-sm">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-light fw-bold fs-5 text-primary collapsed"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                                    <i class="bi bi-cursor-fill me-3 fs-4 text-primary"></i> ¿Cómo puedo reservar plaza?
+                                </button>
+                            </h2>
+                            <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+                                <div class="accordion-body text-muted fs-6 lh-lg px-5 pb-4">
+                                    Puedes reservar plaza a través del formulario de la web en cada respectiva sección
+                                    de campamento.<br>
+                                    <span class="badge bg-warning text-dark mt-2 p-2 px-3"><i
+                                            class="bi bi-exclamation-triangle-fill me-2"></i>Las plazas son limitadas,
+                                        por lo que recomendamos reservar con antelación.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container text-center">
+            <div class="footer-logo mb-3">
+                <i class="bi bi-brightness-high-fill text-warning"></i> CUNA
+            </div>
+            <p class="text-muted fs-5 mb-4">Criando con amor, risas y mucha naturaleza 🌻</p>
+            <div class="social-icons mb-4">
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                <a href="#"><i class="bi bi-youtube"></i></a>
+            </div>
+            <p class="text-muted small mb-0">© 2026 Granja Escuela Cuna - Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summer Camp | Granja Escuela Cuna</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Fredoka:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #E64A19;
+            --secondary-color: #FF8F00;
+            --accent-color: #FFCC80;
+            --bg-color: #FFF8E1;
+            --text-color: #333333;
+            --summer-yellow: #FFEE58;
+            --summer-orange: #FF7043;
+            --summer-red: #EF5350;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            position: relative;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .navbar-brand {
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        /* Navbar aesthetic */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 2px dashed rgba(230, 74, 25, 0.2);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            color: var(--primary-color) !important;
+            font-size: 2rem;
+            text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            color: #555 !important;
+            font-weight: 700;
+            margin: 0 12px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+        }
+
+        .main-container {
+            background: white;
+            border-radius: 40px;
+            border-top: 10px solid var(--primary-color);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Accordion Styles */
+        .accordion-item {
+            border: none;
+            margin-bottom: 15px;
+            border-radius: 20px !important;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item:hover {
+            border-color: rgba(230, 74, 25, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .accordion-button {
+            font-weight: 700;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.2rem;
+            padding: 20px;
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: #FBE9E7;
+            color: var(--primary-color);
+            box-shadow: none;
+        }
+
+        .accordion-button::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23E64A19'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+
+        .accordion-button:not(.collapsed)::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23E64A19'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+
+        .accordion-body {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #555;
+            background-color: #FAFAFA;
+        }
+
+        .accordion-body ul {
+            padding-left: 20px;
+            margin-top: 10px;
+            list-style-type: '🌿 ';
+        }
+
+        .accordion-body li {
+            margin-bottom: 8px;
+        }
+
+        /* Form Styles */
+        .form-label {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--primary-color);
+        }
+
+        .rounded-input {
+            border-radius: 18px;
+            padding: 12px 20px;
+            border: 2px solid #E0E0E0;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .rounded-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(230, 74, 25, 0.25);
+            outline: none;
+        }
+
+        .btn-custom {
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border: none;
+        }
+
+        .btn-primary-custom {
+            background-color: var(--secondary-color);
+            color: white;
+            box-shadow: 0 10px 20px rgba(255, 143, 0, 0.3);
+        }
+
+        .btn-primary-custom:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 25px rgba(230, 74, 25, 0.4);
+            color: white;
+        }
+
+        .btn-outline-primary.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .btn-group .btn {
+            border-radius: 12px;
+            margin: 0 5px;
+            font-weight: 700;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            transition: all 0.2s ease;
+        }
+
+        .btn-group .btn:hover {
+            background-color: rgba(230, 74, 25, 0.1);
+        }
+
+        /* Decorative Elements */
+        .bg-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.25;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--summer-yellow);
+            top: -50px;
+            left: -50px;
+            filter: blur(60px);
+        }
+
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--summer-orange);
+            top: 30%;
+            right: -150px;
+            filter: blur(70px);
+        }
+
+        .shape-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--summer-red);
+            bottom: -50px;
+            left: 10%;
+            filter: blur(50px);
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.8;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 25px;
+            border-radius: 20px;
+            border: 2px dashed rgba(230, 74, 25, 0.3);
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm position-relative z-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-brightness-high-fill text-warning me-2"></i> CUNA
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            style="color: var(--primary-color) !important;">Campamentos</a>
+                        <ul class="dropdown-menu border-0 shadow-lg p-3 rounded-4" style="background-color: #fdfbf7;">
+                            <li><a class="dropdown-item rounded-3 fw-bold text-success py-2" href="navidad.html"><i
+                                        class="bi bi-snow2 me-2 text-info"></i> Navidad</a></li>
+                            <li><a class="dropdown-item rounded-3 fw-bold text-success py-2" href="easter.html"><i
+                                        class="bi bi-flower3 me-2 text-warning"></i> Easter</a></li>
+                            <li><a class="dropdown-item rounded-3 fw-bold text-success py-2" href="verano.html"><i
+                                        class="bi bi-sun me-2 text-danger"></i> Verano</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5 position-relative z-2">
+        <div class="text-center mb-5">
+            <span class="badge bg-white text-primary rounded-pill px-4 py-2 fs-5 mb-3 shadow-sm border border-primary">
+                <i class="bi bi-sun-fill text-warning"></i> Verano 2026
+            </span>
+            <h1 class="display-3 fw-bold text-primary text-center">Summer Camp en Granja Escuela Cuna ☀️🌿</h1>
+        </div>
+
+        <div class="main-container p-4 p-md-5">
+
+            <div class="intro-text text-center mx-auto" style="max-width: 900px;">
+                <strong>Actividades del Summer Camp</strong><br>
+                El Summer Camp de Granja Escuela Cuna es una experiencia única donde los niños disfrutan del verano en
+                plena naturaleza, aprendiendo sobre el mundo rural, los animales y el medio ambiente mientras se
+                divierten con juegos, talleres y aventuras al aire libre.<br><br>
+                Nuestro campamento combina educación, naturaleza y diversión, fomentando valores como el respeto por los
+                animales, el trabajo en equipo, la creatividad y hábitos de vida saludables.
+            </div>
+
+            <div class="row g-5 mt-2">
+
+                <div class="col-lg-6">
+                    <h3 class="fw-bold mb-4 text-primary"><i class="bi bi-calendar2-heart"></i> Programación Semanal
+                    </h3>
+                    <div class="accordion" id="accVerano">
+
+                        <!-- Item 1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#v1">
+                                    🐐 Cuidado de los animales de la granja
+                                </button>
+                            </h2>
+                            <div id="v1" class="accordion-collapse collapse show" data-bs-parent="#accVerano">
+                                <div class="accordion-body">
+                                    <p class="mb-2">Los niños vivirán la experiencia de ser pequeños granjeros:</p>
+                                    <ul>
+                                        <li>Alimentar a gallinas, conejos, cabras y otros animales.</li>
+                                        <li>Recoger huevos del gallinero.</li>
+                                        <li>Conocer cómo viven y qué comen los animales.</li>
+                                        <li>Aprender a cuidarlos y respetarlos.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#v2">
+                                    🌱 Huerto y naturaleza
+                                </button>
+                            </h2>
+                            <div id="v2" class="accordion-collapse collapse" data-bs-parent="#accVerano">
+                                <div class="accordion-body">
+                                    <p class="mb-2">Descubrimos cómo funciona la naturaleza y el mundo rural:</p>
+                                    <ul>
+                                        <li>Plantar semillas y cuidar el huerto.</li>
+                                        <li>Conocer frutas y verduras de temporada.</li>
+                                        <li>Talleres sobre sostenibilidad y reciclaje.</li>
+                                        <li>Observación de insectos y plantas.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#v3">
+                                    👩‍🍳 Talleres de cocina
+                                </button>
+                            </h2>
+                            <div id="v3" class="accordion-collapse collapse" data-bs-parent="#accVerano">
+                                <div class="accordion-body">
+                                    <p class="mb-2">Una de las actividades favoritas del campamento. Los niños aprenden
+                                        a cocinar recetas sencillas y saludables mientras se divierten.</p>
+                                    <ul>
+                                        <li>Elaboración de recetas fáciles y saludables.</li>
+                                        <li>Preparación de meriendas y snacks.</li>
+                                        <li>Uso de ingredientes naturales.</li>
+                                        <li>Aprender hábitos de alimentación saludable.</li>
+                                    </ul>
+                                    <p class="mt-2 text-muted fst-italic">Además, muchas recetas se elaboran con
+                                        productos del huerto o de la granja, para que los niños comprendan el origen de
+                                        los alimentos.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#v4">
+                                    🎨 Talleres creativos
+                                </button>
+                            </h2>
+                            <div id="v4" class="accordion-collapse collapse" data-bs-parent="#accVerano">
+                                <div class="accordion-body">
+                                    <p class="mb-2">La creatividad también tiene su espacio en el campamento:</p>
+                                    <ul>
+                                        <li>Manualidades con materiales naturales.</li>
+                                        <li>Pintura y arte creativo.</li>
+                                        <li>Construcción de pequeños objetos rurales.</li>
+                                        <li>Talleres temáticos de verano.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#v5">
+                                    🏃 Juegos al aire libre
+                                </button>
+                            </h2>
+                            <div id="v5" class="accordion-collapse collapse" data-bs-parent="#accVerano">
+                                <div class="accordion-body">
+                                    <p class="mb-2">El verano se vive mejor jugando:</p>
+                                    <ul>
+                                        <li>Gymkanas y juegos de pistas.</li>
+                                        <li>Juegos tradicionales.</li>
+                                        <li>Circuitos de aventura.</li>
+                                        <li>Dinámicas de grupo y cooperación.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 6 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#v6">
+                                    💦 Juegos de agua
+                                </button>
+                            </h2>
+                            <div id="v6" class="accordion-collapse collapse" data-bs-parent="#accVerano">
+                                <div class="accordion-body">
+                                    <p class="mb-2">Para refrescarnos en los días más calurosos:</p>
+                                    <ul>
+                                        <li>Juegos con agua.</li>
+                                        <li>Actividades refrescantes al aire libre.</li>
+                                        <li>Pequeñas competiciones divertidas.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 7 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#v7">
+                                    🐾 Exploración de la naturaleza
+                                </button>
+                            </h2>
+                            <div id="v7" class="accordion-collapse collapse" data-bs-parent="#accVerano">
+                                <div class="accordion-body">
+                                    <p class="mb-2">Aventuras para descubrir el entorno natural:</p>
+                                    <ul>
+                                        <li>Rutas por la granja.</li>
+                                        <li>Búsqueda del tesoro en la naturaleza.</li>
+                                        <li>Juegos de exploradores.</li>
+                                        <li>Descubrir huellas, plantas y pequeños animales.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 8 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#v8">
+                                    🎭 Actividades de grupo y animación
+                                </button>
+                            </h2>
+                            <div id="v8" class="accordion-collapse collapse" data-bs-parent="#accVerano">
+                                <div class="accordion-body">
+                                    <p class="mb-2">Momentos para compartir y hacer nuevos amigos:</p>
+                                    <ul>
+                                        <li>Cuentacuentos.</li>
+                                        <li>Juegos cooperativos.</li>
+                                        <li>Música y baile.</li>
+                                        <li>Pequeñas representaciones y teatro.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6 border-start ps-lg-5">
+                    <h3 class="fw-bold mb-4 text-primary"><i class="bi bi-card-checklist"></i> Lista de Espera</h3>
+                    <p class="text-muted small mb-4">Las inscripciones están actualmente cerradas, pero puedes anotarte
+                        para recibir avisos de vacantes.</p>
+
+                    <form class="row g-4 bg-light p-4 rounded-4 shadow-sm border border-light text-center">
+                        <div class="col-12 mb-3">
+                            <i class="bi bi-file-earmark-text text-primary" style="font-size: 3rem;"></i>
+                            <h4 class="fw-bold mt-3" style="color: var(--primary-color);">Inscripción Online</h4>
+                            <p class="text-muted">Para las listas de espera y reservas de verano, utilizamos Google
+                                Forms. Es más rápido, directo y seguro.</p>
+                        </div>
+                        <div class="col-12 pt-2">
+                            <button type="button" class="btn btn-secondary btn-custom w-100 disabled shadow-none mb-3"
+                                style="background-color: #e0e0e0; color: #757575;">
+                                Plazas Temporales Agotadas <i class="bi bi-lock-fill ms-2"></i>
+                            </button>
+                            <a href="#" target="_blank" class="btn btn-custom btn-primary-custom w-100 fs-5 pb-3 pt-3">
+                                Formulario de Lista de Espera <i class="bi bi-box-arrow-up-right ms-2"></i>
+                            </a>
+                            <p class="text-muted small mt-3 mb-0">Serás redirigido a un formulario seguro de Google.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Form -->
+    <div class="modal fade" id="modalVerano" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 p-4 shadow-lg" style="background-color: var(--bg-color);">
+                <div class="modal-header border-0 pb-0 justify-content-center">
+                    <div class="fs-1 text-primary mb-2"><i class="bi bi-bell-fill text-warning"></i></div>
+                </div>
+                <div class="modal-body text-center">
+                    <h4 class="fw-bold text-primary mb-3">¡Te avisaremos! ☀️</h4>
+                    <p class="text-muted fs-5">
+                        Te has apuntado correctamente a la lista de espera de Verano 2026. Recibirás un correo si se
+                        libera alguna plaza.
+                    </p>
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                    <button type="button" class="btn btn-custom btn-primary-custom" data-bs-dismiss="modal">Cerrar <i
+                            class="bi bi-x-circle-fill ms-1"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Decorate active buttons
+        const btnGroup = document.querySelectorAll('.btn-group .btn, .d-flex .btn-outline-primary');
+        btnGroup.forEach(btn => {
+            btn.addEventListener('click', function () {
+                btnGroup.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
