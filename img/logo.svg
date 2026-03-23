@@ -1,0 +1,79 @@
+<svg width="300" height="350" viewBox="0 0 300 350" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <clipPath id="circleClip">
+            <circle cx="150" cy="140" r="105" />
+        </clipPath>
+        
+        <style>
+            .bg { fill: #8a5a44; }
+            .leaf { fill: #10d46f; }
+            .leaf-dark { fill: #0bb65c; }
+            .carrot-l { fill: #ffa200; }
+            .carrot-m { fill: #ffbc00; }
+            .carrot-r { fill: #ffcd00; }
+            .dash-l { fill: #e68a00; }
+            .dash-m { fill: #e6a800; }
+            .dash-r { fill: #e6b800; }
+            .text-main { font-family: 'Arial Rounded MT Bold', 'Nunito', 'Fredoka One', sans-serif; font-size: 85px; font-weight: 800; fill: #3b423f; letter-spacing: -3px; }
+            .text-sub { font-family: 'Montserrat', 'Helvetica', sans-serif; font-size: 15px; font-weight: 600; fill: #6c7571; letter-spacing: 5px; }
+        </style>
+    </defs>
+    
+    <!-- Background Circle -->
+    <circle cx="150" cy="140" r="105" class="bg"/>
+    
+    <!-- Leaves (Draw behind carrots, breaking out of circle) -->
+    <!-- Middle Leaves -->
+    <g transform="translate(150, 90)">
+        <path d="M 0 30 C -30 -30, 20 -80, 20 -40 C 20 -80, 70 -30, 0 30 Z" class="leaf" transform="translate(-10, 0)"/>
+        <path d="M 0 30 C -20 -10, 20 -50, 20 -20 C 20 -50, 50 -10, 0 30 Z" class="leaf-dark" transform="translate(-10, 0) scale(0.7)"/>
+        <!-- To make it bushy, add more -->
+        <path d="M -5 30 C -40 -10, -10 -60, -10 -30 C -10 -60, 30 -10, -5 30 Z" class="leaf" transform="translate(-15, 5) rotate(-30)"/>
+        <path d="M 5 30 C -30 -10, 10 -60, 10 -30 C 10 -60, 40 -10, 5 30 Z" class="leaf" transform="translate(15, 5) rotate(30)"/>
+    </g>
+    
+    <!-- Left Leaves -->
+    <g transform="translate(100, 100) rotate(-20)">
+        <path d="M 0 30 C -30 -30, 20 -80, 20 -40 C 20 -80, 70 -30, 0 30 Z" class="leaf" transform="translate(-10, 0)"/>
+        <path d="M -5 30 C -40 -10, -10 -60, -10 -30 C -10 -60, 30 -10, -5 30 Z" class="leaf" transform="translate(-15, 5) rotate(-30)"/>
+        <path d="M 5 30 C -30 -10, 10 -60, 10 -30 C 10 -60, 40 -10, 5 30 Z" class="leaf" transform="translate(15, 5) rotate(30)"/>
+    </g>
+    
+    <!-- Right Leaves -->
+    <g transform="translate(195, 110) rotate(25)">
+        <path d="M 0 30 C -30 -30, 20 -80, 20 -40 C 20 -80, 70 -30, 0 30 Z" class="leaf" transform="translate(-10, 0)"/>
+        <path d="M -5 30 C -40 -10, -10 -60, -10 -30 C -10 -60, 30 -10, -5 30 Z" class="leaf" transform="translate(-15, 5) rotate(-30)"/>
+        <path d="M 5 30 C -30 -10, 10 -60, 10 -30 C 10 -60, 40 -10, 5 30 Z" class="leaf" transform="translate(15, 5) rotate(30)"/>
+    </g>
+    
+    <!-- Carrots clipped to circle -->
+    <g clip-path="url(#circleClip)">
+        <!-- Left Carrot -->
+        <g transform="translate(100, 160) rotate(20)">
+            <path d="M-35,-80 Q35,-80 35,-20 L35,80 Q35,120 0,120 Q-35,120 -35,80 Z" class="carrot-l" />
+            <rect x="-15" y="-30" width="20" height="6" rx="3" class="dash-l" />
+            <rect x="0" y="10" width="15" height="6" rx="3" class="dash-l" />
+            <rect x="-10" y="50" width="20" height="6" rx="3" class="dash-l" />
+        </g>
+        
+        <!-- Right Carrot -->
+        <g transform="translate(200, 155) rotate(-20)">
+            <path d="M-32,-80 Q32,-80 32,-20 L32,80 Q32,120 0,120 Q-32,120 -32,80 Z" class="carrot-r" />
+            <rect x="-10" y="-30" width="20" height="6" rx="3" class="dash-r" />
+            <rect x="-15" y="10" width="18" height="6" rx="3" class="dash-r" />
+            <rect x="-5" y="50" width="15" height="6" rx="3" class="dash-r" />
+        </g>
+        
+        <!-- Middle Carrot -->
+        <g transform="translate(150, 145) rotate(0)">
+            <path d="M-38,-80 Q38,-80 38,-20 L38,80 Q38,120 0,120 Q-38,120 -38,80 Z" class="carrot-m" />
+            <rect x="-15" y="-20" width="25" height="6" rx="3" class="dash-m" />
+            <rect x="5" y="20" width="20" height="6" rx="3" class="dash-m" />
+            <rect x="-10" y="60" width="25" height="6" rx="3" class="dash-m" />
+        </g>
+    </g>
+    
+    <!-- Text -->
+    <text x="150" y="295" text-anchor="middle" class="text-main">cuna</text>
+    <text x="150" y="325" text-anchor="middle" class="text-sub">GRANJAESCUELA</text>
+</svg>
