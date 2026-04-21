@@ -195,8 +195,58 @@
             transition: all 0.2s ease;
         }
 
-        .btn-group .btn:hover {
-            background-color: rgba(46, 125, 50, 0.1);
+        /* Custom Week Selectors */
+        .grid-checkboxes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        @media (max-width: 576px) {
+            .grid-checkboxes {
+                grid-template-columns: 1fr;
+            }
+        }
+        .week-card-input {
+            display: none;
+        }
+        .week-card-label {
+            height: 100%;
+            background: #fff;
+            border: 2px solid #E0E0E0;
+            border-radius: 18px;
+            padding: 12px 10px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            color: #666;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            margin: 0;
+        }
+        .week-card-label:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(129,199,132,0.15);
+        }
+        .week-card-input:checked + .week-card-label {
+            background-color: #F1F8E9;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            box-shadow: 0 6px 15px rgba(46, 125, 50, 0.25);
+        }
+        .week-card-icon {
+            font-size: 1.4rem;
+            color: #D1D1D1;
+            transition: all 0.3s ease;
+        }
+        .week-card-input:checked + .week-card-label .week-card-icon {
+            color: var(--primary-color);
+            transform: scale(1.1);
         }
 
         /* Decorative Elements */
@@ -509,21 +559,116 @@
                             </ul>
                         </div>
                     </div>
-                    <h3 class="fw-bold mb-4 text-warning"><i class="bi bi-pencil-square"></i> Formulario de Inscripción
-                    </h3>
-                    <form class="row g-4 bg-light p-4 rounded-4 shadow-sm border border-light text-center">
-                        <div class="col-12 mb-3">
-                            <i class="bi bi-file-earmark-text text-warning" style="font-size: 3rem;"></i>
-                            <h4 class="fw-bold mt-3" style="color: var(--primary-color);">Inscripción Online</h4>
-                            <p class="text-muted">Hemos trasladado nuestro proceso de inscripción a Google Forms para
-                                que sea más rápido, seguro y sencillo para ti.</p>
+                    <h3 class="fw-bold mb-4 text-warning"><i class="bi bi-pencil-square"></i> Formulario de Inscripción</h3>
+                    <p class="text-muted small mb-4">Rellena este formulario para solicitar plaza. Una vez enviado, nos pondremos en contacto contigo.</p>
+
+                    <form id="easterForm" class="bg-light p-4 rounded-4 shadow-sm border border-light text-start">
+                        <!-- Bloque 1: Tutor -->
+                        <h5 class="fw-bold text-secondary mb-3"><i class="bi bi-person-badge"></i> Datos del Tutor/a</h5>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label for="tutorNombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control rounded-input" id="tutorNombre" name="tutorNombre" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="tutorApellidos" class="form-label">Apellidos</label>
+                                <input type="text" class="form-control rounded-input" id="tutorApellidos" name="tutorApellidos" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="tutorDNI" class="form-label">DNI</label>
+                                <input type="text" class="form-control rounded-input" id="tutorDNI" name="tutorDNI" required pattern="[0-9]{8}[A-Za-z]{1}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="tutorTelefono" class="form-label">Teléfono</label>
+                                <input type="tel" class="form-control rounded-input" id="tutorTelefono" name="tutorTelefono" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="tutorEmail" class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control rounded-input" id="tutorEmail" name="tutorEmail" required>
+                            </div>
                         </div>
-                        <div class="col-12 pt-2">
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdrWyZURzhs2v6rQDMHVqGHf2za6sDq87evX58_eazGPnjv6Q/viewform?usp=header"
-                                target="_blank" class="btn btn-custom btn-primary-custom w-100 fs-5 pb-3 pt-3">
-                                Rellenar Formulario de Inscripción <i class="bi bi-box-arrow-up-right ms-2"></i>
-                            </a>
-                            <p class="text-muted small mt-3 mb-0">Serás redirigido a un formulario seguro de Google.</p>
+
+                        <!-- Bloque 2: Participante -->
+                        <h5 class="fw-bold text-secondary mb-3"><i class="bi bi-emoji-smile"></i> Datos del Participante</h5>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label for="ninoNombre" class="form-label">Nombre del niño/a</label>
+                                <input type="text" class="form-control rounded-input" id="ninoNombre" name="ninoNombre" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="ninoApellidos" class="form-label">Apellidos</label>
+                                <input type="text" class="form-control rounded-input" id="ninoApellidos" name="ninoApellidos" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="ninoNacimiento" class="form-label">F. Nacimiento</label>
+                                <input type="date" class="form-control rounded-input" id="ninoNacimiento" name="ninoNacimiento" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="alergias" class="form-label">Alergias / Observaciones</label>
+                                <textarea class="form-control rounded-input" id="alergias" name="alergias" rows="2" placeholder="Indicaciones médicas..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Bloque 3: Campamento -->
+                        <h5 class="fw-bold text-secondary mb-3"><i class="bi bi-flower3"></i> Opciones Easter</h5>
+                        <div class="row g-3 mb-4">
+                            <div class="col-12">
+                                <label class="form-label d-block mb-3">Días que asistirá</label>
+                                <div id="semanasContainer" class="grid-checkboxes text-start">
+                                    <input type="checkbox" class="week-card-input btn-check" id="eDia1" value="Lunes Santo" autocomplete="off">
+                                    <label class="week-card-label" for="eDia1">
+                                        <i class="bi bi-egg-fill week-card-icon text-warning"></i>
+                                        <span>Lunes Santo</span>
+                                    </label>
+                                    
+                                    <input type="checkbox" class="week-card-input btn-check" id="eDia2" value="Martes Santo" autocomplete="off">
+                                    <label class="week-card-label" for="eDia2">
+                                        <i class="bi bi-egg-fill week-card-icon text-info"></i>
+                                        <span>Martes Santo</span>
+                                    </label>
+
+                                    <input type="checkbox" class="week-card-input btn-check" id="eDia3" value="Miércoles Santo" autocomplete="off">
+                                    <label class="week-card-label" for="eDia3">
+                                        <i class="bi bi-egg-fill week-card-icon text-danger"></i>
+                                        <span>Miércoles Santo</span>
+                                    </label>
+
+                                    <input type="checkbox" class="week-card-input btn-check" id="eMes" value="Tres Días Completos" autocomplete="off">
+                                    <label class="week-card-label" for="eMes" style="grid-column: 1 / -1; justify-content: center; background-color: rgba(46,125,50,0.05);">
+                                        <i class="bi bi-basket2-fill week-card-icon"></i>
+                                        <span>Los Tres Días</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mt-2">
+                                <label class="form-label d-block mb-3">Servicios Adicionales</label>
+                                <div class="grid-checkboxes text-start">
+                                    <input type="checkbox" class="week-card-input btn-check" id="matinal" name="matinal" value="Si" autocomplete="off">
+                                    <label class="week-card-label" for="matinal" style="justify-content: center; background-color: #FAFAFA;">
+                                        <i class="bi bi-brightness-alt-high-fill text-warning fs-5"></i>
+                                        <span class="fs-6">Aula Matinal</span>
+                                    </label>
+
+                                    <input type="checkbox" class="week-card-input btn-check" id="comedor" name="comedor" value="Si" autocomplete="off">
+                                    <label class="week-card-label" for="comedor" style="justify-content: center; background-color: #FAFAFA;">
+                                        <i class="bi bi-cup-hot-fill text-danger fs-5"></i>
+                                        <span class="fs-6">Comedor</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 text-center">
+                            <button type="submit" id="submitBtn" class="btn btn-custom btn-primary-custom w-100 fs-5 pb-3 pt-3">
+                                Enviar Inscripción <i class="bi bi-send-fill ms-2"></i>
+                            </button>
+                            <div id="loadingIndicator" class="text-center mt-3 d-none">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Enviando...</span>
+                                </div>
+                                <p class="text-muted mt-2 fw-bold">Guardando datos...</p>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -563,6 +708,55 @@
                 this.classList.add('active');
             });
         });
+
+        const SCRIPT_URL = 'URL_DE_TU_GOOGLE_APP_SCRIPT_EASTER_AQUI'; 
+        const form = document.getElementById('easterForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+
+        if(form) {
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+
+                if(SCRIPT_URL === 'URL_DE_TU_GOOGLE_APP_SCRIPT_AQUI') {
+                    alert("⚠️ ¡Atención! Todavía no has puesto la URL de tu Google Apps Script.");
+                    return;
+                }
+
+                submitBtn.classList.add('d-none');
+                loadingIndicator.classList.remove('d-none');
+
+                const formData = new FormData(form);
+                const semanasSeleccionadas = Array.from(document.querySelectorAll('#semanasContainer .btn-check:checked')).map(cb => cb.value).join(', ');
+                
+                if (!semanasSeleccionadas) {
+                    alert('Por favor, selecciona al menos un día.');
+                    submitBtn.classList.remove('d-none');
+                    loadingIndicator.classList.add('d-none');
+                    return;
+                }
+
+                formData.set('semanas', semanasSeleccionadas);
+                
+                fetch(SCRIPT_URL, { method: 'POST', body: formData })
+                .then(response => response.text())
+                .then(data => {
+                    var myModal = new bootstrap.Modal(document.getElementById('modalEaster'));
+                    myModal.show();
+                    form.reset();
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    var myModal = new bootstrap.Modal(document.getElementById('modalEaster'));
+                    myModal.show();
+                    form.reset();
+                })
+                .finally(() => {
+                    submitBtn.classList.remove('d-none');
+                    loadingIndicator.classList.add('d-none');
+                });
+            });
+        }
     </script>
 </body>
 

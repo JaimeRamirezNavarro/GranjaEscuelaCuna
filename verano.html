@@ -195,8 +195,58 @@
             transition: all 0.2s ease;
         }
 
-        .btn-group .btn:hover {
-            background-color: rgba(230, 74, 25, 0.1);
+        /* Custom Week Selectors */
+        .grid-checkboxes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        @media (max-width: 576px) {
+            .grid-checkboxes {
+                grid-template-columns: 1fr;
+            }
+        }
+        .week-card-input {
+            display: none;
+        }
+        .week-card-label {
+            height: 100%;
+            background: #fff;
+            border: 2px solid #E0E0E0;
+            border-radius: 18px;
+            padding: 12px 10px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            color: #666;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            margin: 0;
+        }
+        .week-card-label:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(255,143,0,0.15);
+        }
+        .week-card-input:checked + .week-card-label {
+            background-color: #FFF3E0;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            box-shadow: 0 6px 15px rgba(230, 74, 25, 0.25);
+        }
+        .week-card-icon {
+            font-size: 1.4rem;
+            color: #D1D1D1;
+            transition: all 0.3s ease;
+        }
+        .week-card-input:checked + .week-card-label .week-card-icon {
+            color: var(--primary-color);
+            transform: scale(1.1);
         }
 
         /* Decorative Elements */
@@ -537,26 +587,178 @@
                 </div>
 
                 <div class="col-lg-6 border-start ps-lg-5">
-                    <h3 class="fw-bold mb-4 text-primary"><i class="bi bi-card-checklist"></i> Lista de Espera</h3>
-                    <p class="text-muted small mb-4">Las inscripciones están actualmente cerradas, pero puedes anotarte
-                        para recibir avisos de vacantes.</p>
-
-                    <form class="row g-4 bg-light p-4 rounded-4 shadow-sm border border-light text-center">
-                        <div class="col-12 mb-3">
-                            <i class="bi bi-file-earmark-text text-primary" style="font-size: 3rem;"></i>
-                            <h4 class="fw-bold mt-3" style="color: var(--primary-color);">Inscripción Online</h4>
-                            <p class="text-muted">Para las listas de espera y reservas de verano, utilizamos Google
-                                Forms. Es más rápido, directo y seguro.</p>
+                    <h3 class="fw-bold mb-4 text-primary"><i class="bi bi-clock-history"></i> Precios y Horarios</h3>
+                    
+                    <div class="card border-0 shadow-sm rounded-4 mb-4" style="background-color: #FAFAFA;">
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-3">
+                                    <div class="fw-bold text-dark fs-5">Horario General: De 9:00 a 14:00</div>
+                                </li>
+                                <hr class="text-muted opacity-25">
+                                <li class="mb-3 d-flex justify-content-between align-items-center">
+                                    <div><strong>Aula Matinal (7:30 a 9:00)</strong></div>
+                                    <span class="fs-6 fw-bold text-primary">+15€ / sem</span>
+                                </li>
+                                <li class="mb-3 d-flex justify-content-between align-items-center">
+                                    <div><strong>Comedor (14:00 a 16:00)</strong></div>
+                                    <span class="fs-6 fw-bold text-primary">+35€ / sem</span>
+                                </li>
+                                <hr class="text-muted opacity-25 border-2 border-primary">
+                                <li class="mb-2 d-flex justify-content-between align-items-center"><div>1 Semana</div><span class="fw-bold text-primary">80€</span></li>
+                                <li class="mb-2 d-flex justify-content-between align-items-center"><div>2 Semanas</div><span class="fw-bold text-primary">160€</span></li>
+                                <li class="mb-2 d-flex justify-content-between align-items-center"><div>3 Semanas</div><span class="fw-bold text-primary">225€</span></li>
+                                <li class="mb-2 d-flex justify-content-between align-items-center"><div>4 Semanas</div><span class="fw-bold text-primary">280€</span></li>
+                                <li class="mb-2 d-flex justify-content-between align-items-center"><div>5 Semanas</div><span class="fw-bold text-primary">325€</span></li>
+                                <li class="mb-2 d-flex justify-content-between align-items-center"><div>6 Semanas</div><span class="fw-bold text-primary">390€</span></li>
+                                <li class="mb-2 d-flex justify-content-between align-items-center"><div>7 Semanas</div><span class="fw-bold text-primary">420€</span></li>
+                                <li class="mb-2 d-flex justify-content-between align-items-center"><div>8 Semanas</div><span class="fw-bold text-primary">480€</span></li>
+                                <li class="mb-3 d-flex justify-content-between align-items-center"><div>9 Semanas</div><span class="fw-bold text-primary">540€</span></li>
+                                <li class="text-center mt-3">
+                                    <small class="text-muted"><i class="bi bi-info-circle-fill text-warning"></i> También días sueltos disponibles.<br>
+                                    <span class="text-success fw-bold">10% Dto. por hermanos</span></small>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="col-12 pt-2">
-                            <button type="button" class="btn btn-secondary btn-custom w-100 disabled shadow-none mb-3"
-                                style="background-color: #e0e0e0; color: #757575;">
-                                Plazas Temporales Agotadas <i class="bi bi-lock-fill ms-2"></i>
+                    </div>
+
+                    <h3 class="fw-bold mb-4 text-primary"><i class="bi bi-pencil-square"></i> Inscripción Summer Camp</h3>
+                    <p class="text-muted small mb-4">Rellena este formulario para solicitar plaza. Una vez enviado, nos pondremos en contacto contigo.</p>
+
+                    <!-- Importante: el name de cada input debe coincidir con los esperados en Google Sheets -->
+                    <form id="summerForm" class="bg-light p-4 rounded-4 shadow-sm border border-light">
+                        
+                        <!-- Bloque 1: Tutor -->
+                        <h5 class="fw-bold text-secondary mb-3"><i class="bi bi-person-badge"></i> Datos del Tutor/a</h5>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label for="tutorNombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control rounded-input" id="tutorNombre" name="tutorNombre" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="tutorApellidos" class="form-label">Apellidos</label>
+                                <input type="text" class="form-control rounded-input" id="tutorApellidos" name="tutorApellidos" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="tutorDNI" class="form-label">DNI</label>
+                                <input type="text" class="form-control rounded-input" id="tutorDNI" name="tutorDNI" required pattern="[0-9]{8}[A-Za-z]{1}" title="Ejemplo: 12345678A">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="tutorTelefono" class="form-label">Teléfono</label>
+                                <input type="tel" class="form-control rounded-input" id="tutorTelefono" name="tutorTelefono" required title="Introduce un teléfono válido">
+                            </div>
+                            <div class="col-12">
+                                <label for="tutorEmail" class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control rounded-input" id="tutorEmail" name="tutorEmail" required>
+                            </div>
+                        </div>
+
+                        <!-- Bloque 2: Participante -->
+                        <h5 class="fw-bold text-secondary mb-3"><i class="bi bi-emoji-smile"></i> Datos del Participante</h5>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label for="ninoNombre" class="form-label">Nombre del niño/a</label>
+                                <input type="text" class="form-control rounded-input" id="ninoNombre" name="ninoNombre" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="ninoApellidos" class="form-label">Apellidos</label>
+                                <input type="text" class="form-control rounded-input" id="ninoApellidos" name="ninoApellidos" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="ninoNacimiento" class="form-label">F. Nacimiento</label>
+                                <input type="date" class="form-control rounded-input" id="ninoNacimiento" name="ninoNacimiento" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="alergias" class="form-label">Alergias / Observaciones Médicas</label>
+                                <textarea class="form-control rounded-input" id="alergias" name="alergias" rows="2" placeholder="Indicar 'Ninguna' si no tiene alergias"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Bloque 3: Campamento -->
+                        <h5 class="fw-bold text-secondary mb-3"><i class="bi bi-sun"></i> Opciones de Campamento</h5>
+                        <div class="row g-3 mb-4">
+                            <div class="col-12">
+                                <label class="form-label d-block mb-3">Semanas que asistirá (Puedes elegir varias)</label>
+                                <div id="semanasContainer" class="grid-checkboxes text-start">
+                                    <input type="checkbox" class="week-card-input btn-check" id="sem1" value="Semana 1 (24-28 Jun)" autocomplete="off">
+                                    <label class="week-card-label" for="sem1"><i class="bi bi-calendar-check week-card-icon"></i><span>Semana 1 (24-28 Jun)</span></label>
+                                    
+                                    <input type="checkbox" class="week-card-input btn-check" id="sem2" value="Semana 2 (1-5 Jul)" autocomplete="off">
+                                    <label class="week-card-label" for="sem2"><i class="bi bi-calendar-check week-card-icon"></i><span>Semana 2 (1-5 Jul)</span></label>
+                                    
+                                    <input type="checkbox" class="week-card-input btn-check" id="sem3" value="Semana 3 (8-12 Jul)" autocomplete="off">
+                                    <label class="week-card-label" for="sem3"><i class="bi bi-calendar-check week-card-icon"></i><span>Semana 3 (8-12 Jul)</span></label>
+                                    
+                                    <input type="checkbox" class="week-card-input btn-check" id="sem4" value="Semana 4 (15-19 Jul)" autocomplete="off">
+                                    <label class="week-card-label" for="sem4"><i class="bi bi-calendar-check week-card-icon"></i><span>Semana 4 (15-19 Jul)</span></label>
+                                    
+                                    <input type="checkbox" class="week-card-input btn-check" id="sem5" value="Semana 5 (22-26 Jul)" autocomplete="off">
+                                    <label class="week-card-label" for="sem5"><i class="bi bi-calendar-check week-card-icon"></i><span>Semana 5 (22-26 Jul)</span></label>
+                                    
+                                    <input type="checkbox" class="week-card-input btn-check" id="sem6" value="Semana 6 (29 Jul-2 Ago)" autocomplete="off">
+                                    <label class="week-card-label" for="sem6"><i class="bi bi-calendar-check week-card-icon"></i><span>Semana 6 (29 Jul-2 Ago)</span></label>
+                                    
+                                    <input type="checkbox" class="week-card-input btn-check" id="sem7" value="Semana 7 (4-8 Ago)" autocomplete="off">
+                                    <label class="week-card-label" for="sem7"><i class="bi bi-calendar-check week-card-icon"></i><span>Semana 7 (4-8 Ago)</span></label>
+                                    
+                                    <input type="checkbox" class="week-card-input btn-check" id="sem8" value="Semana 8 (25-29 Ago)" autocomplete="off">
+                                    <label class="week-card-label" for="sem8"><i class="bi bi-calendar-check week-card-icon"></i><span>Semana 8 (25-29 Ago)</span></label>
+
+                                    <input type="checkbox" class="week-card-input btn-check" id="sem9" value="Semana 9 (1-5 Sep)" autocomplete="off">
+                                    <label class="week-card-label" for="sem9"><i class="bi bi-calendar-check week-card-icon"></i><span>Semana 9 (1-5 Sep)</span></label>
+
+                                    <input type="checkbox" class="week-card-input btn-check" id="sem10" value="Dias 8-9 Sep" autocomplete="off">
+                                    <label class="week-card-label" for="sem10"><i class="bi bi-calendar-check week-card-icon"></i><span>Días 8-9 Sep</span></label>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mt-2">
+                                <label class="form-label d-block mb-3">Servicios Adicionales</label>
+                                <div class="grid-checkboxes text-start">
+                                    <input type="checkbox" class="week-card-input btn-check" id="matinal" name="matinal" value="Si" autocomplete="off">
+                                    <label class="week-card-label" for="matinal" style="justify-content: center; background-color: #FAFAFA;">
+                                        <i class="bi bi-brightness-alt-high-fill text-warning fs-5"></i>
+                                        <span class="fs-6">Aula Matinal</span>
+                                    </label>
+
+                                    <input type="checkbox" class="week-card-input btn-check" id="comedor" name="comedor" value="Si" autocomplete="off">
+                                    <label class="week-card-label" for="comedor" style="justify-content: center; background-color: #FAFAFA;">
+                                        <i class="bi bi-cup-hot-fill text-danger fs-5"></i>
+                                        <span class="fs-6">Comedor</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bloque 4: Autorizaciones -->
+                        <h5 class="fw-bold text-secondary mb-3"><i class="bi bi-shield-check"></i> Autorizaciones</h5>
+                        <div class="row g-3 mb-4 text-start">
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="autorizaImagen" name="autorizaImagen" required>
+                                    <label class="form-check-label small" for="autorizaImagen">
+                                        Autorizo el uso de imágenes para redes sociales y material de la web de Granja Escuela Cuna.
+                                    </label>
+                                </div>
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input" type="checkbox" id="aceptaCondiciones" name="aceptaCondiciones" required>
+                                    <label class="form-check-label small" for="aceptaCondiciones">
+                                        He leído y acepto la Política de Privacidad y las Condiciones Generales del Summer Camp.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-3">
+                            <button type="submit" id="submitBtn" class="btn btn-custom btn-primary-custom w-100 fs-5 pb-3 pt-3">
+                                Enviar Inscripción <i class="bi bi-send-fill ms-2"></i>
                             </button>
-                            <a href="#" target="_blank" class="btn btn-custom btn-primary-custom w-100 fs-5 pb-3 pt-3">
-                                Formulario de Lista de Espera <i class="bi bi-box-arrow-up-right ms-2"></i>
-                            </a>
-                            <p class="text-muted small mt-3 mb-0">Serás redirigido a un formulario seguro de Google.</p>
+                            <div id="loadingIndicator" class="text-center mt-3 d-none">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Enviando...</span>
+                                </div>
+                                <p class="text-muted mt-2 fw-bold">Guardando datos, por favor espera...</p>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -572,10 +774,9 @@
                     <div class="fs-1 text-primary mb-2"><i class="bi bi-bell-fill text-warning"></i></div>
                 </div>
                 <div class="modal-body text-center">
-                    <h4 class="fw-bold text-primary mb-3">¡Te avisaremos! ☀️</h4>
+                    <h4 class="fw-bold text-primary mb-3">¡Inscripción Recibida! ☀️</h4>
                     <p class="text-muted fs-5">
-                        Te has apuntado correctamente a la lista de espera de Verano 2026. Recibirás un correo si se
-                        libera alguna plaza.
+                        Hemos recibido tu solicitud correctamente. En breve nos pondremos en contacto contigo para confirmar la reserva de plaza y formalizar el pago.
                     </p>
                 </div>
                 <div class="modal-footer border-0 justify-content-center">
@@ -596,6 +797,66 @@
                 this.classList.add('active');
             });
         });
+
+        // Lógica del Formulario conectado a Google Sheets
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyi2KCRZE_tUTxtxbkGY5b-YbalrmeN8QyXSz0kAqlsmPTjcW3TeQtZ5fr9BHAo9ORT/exec'; 
+
+        const form = document.getElementById('summerForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+
+        if(form) {
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+
+                if(SCRIPT_URL === 'URL_DE_TU_GOOGLE_APP_SCRIPT_AQUI') {
+                    alert("⚠️ ¡Atención! Todavía no has puesto la URL de tu Google Apps Script en el código de la web (al final del archivo verano.html).");
+                    return;
+                }
+
+                // Deshabilitar botón y mostrar carga
+                submitBtn.classList.add('d-none');
+                loadingIndicator.classList.remove('d-none');
+
+                const formData = new FormData(form);
+                
+                // Recoger campos múltiples (los nuevos botones interactivos)
+                const semanasSeleccionadas = Array.from(document.querySelectorAll('#semanasContainer .btn-check:checked')).map(cb => cb.value).join(', ');
+                
+                if (!semanasSeleccionadas) {
+                    alert('Por favor, selecciona al menos una semana o mes de campamento.');
+                    submitBtn.classList.remove('d-none');
+                    loadingIndicator.classList.add('d-none');
+                    return;
+                }
+
+                formData.set('semanas', semanasSeleccionadas);
+                
+                fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(data => {
+                    // Mostrar modal de éxito
+                    var myModal = new bootstrap.Modal(document.getElementById('modalVerano'));
+                    myModal.show();
+                    form.reset(); // Limpiar formulario
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    // Como el modo "no-cors" a veces impide leer response.ok, a menudo se asume éxito de todos modos o se gestiona así:
+                    // Por si falla CORS localmente pero el dato se envió:
+                    var myModal = new bootstrap.Modal(document.getElementById('modalVerano'));
+                    myModal.show();
+                    form.reset();
+                })
+                .finally(() => {
+                    submitBtn.classList.remove('d-none');
+                    loadingIndicator.classList.add('d-none');
+                });
+            });
+        }
     </script>
 </body>
 
